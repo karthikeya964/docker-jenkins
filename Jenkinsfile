@@ -8,8 +8,8 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
+                echo "📌 Cloning Repo..."
                 git url: 'https://github.com/arjunkoppineni/docker-jenkins.git', branch: 'main'
-                echo "✅ Repository Cloned Successfully"
             }
         }
 
@@ -23,11 +23,8 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 echo "🚀 Pushing Docker Image..."
-                script {
-                    withDockerRegistry([credentialsId: 'docker-hub-cred', url: '']) {
-                        bat "docker login -u %DOCKER_USER% -p %DOCKER_PASS%"
-                        bat "docker push %DOCKER_IMAGE%"
-                    }
+                withDockerRegistry([credentialsId: 'docker-hub-cred', url: 'https://index.docker.io/v1/']) {
+                    bat "docker push %DOCKER_IMAGE%"
                 }
             }
         }
