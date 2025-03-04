@@ -12,14 +12,14 @@ stages{
     }
     stage('Build Docker Image'){
         steps{
-            sh 'docker build -t $DOCKER_IMAGE .'
+            bat 'docker build -t $DOCKER_IMAGE .'
         }
     }
     
     stage('Push docker image'){
         steps{
             withDockerRegistry([credentialsId:'docker-hub-cred',url: 'https://index.docker.io/v1/']){
-                sh 'docker push $DOCKER_IMAGE'
+                bat 'docker push $DOCKER_IMAGE'
             }
         }
     }
