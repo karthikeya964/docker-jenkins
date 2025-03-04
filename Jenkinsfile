@@ -23,7 +23,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 echo "🚀 Pushing Docker Image..."
-                withDockerRegistry([credentialsId: 'docker-hub-cred', url: 'https://index.docker.io/v1/']) {
+                withDockerRegistry([credentialsId: 'docke-hub-cred', url: 'https://index.docker.io/v1/']) {
                     bat "docker push %DOCKER_IMAGE%"
                 }
             }
