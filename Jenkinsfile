@@ -2,14 +2,14 @@ pipeline {
     agent any
     
     environment {
-        DOCKER_IMAGE = 'harishkoppineni/flask-app:latest'
+        DOCKER_IMAGE = 'karthik449'/flask-app:latest'
     }
 
     stages {
         stage('Clone Repo') {
             steps {
                 echo "📌 Cloning Repo..."
-                git url: 'https://github.com/arjunkoppineni/docker-jenkins.git', branch: 'main'
+                git url: 'https://github.com/karthikeya964/Docker-flask.git', branch: 'main'
             }
         }
 
