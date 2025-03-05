@@ -16,7 +16,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo "🔨 Building Docker Image..."
-                bat "docker build -t %DOCKER_IMAGE% ."
+                sh "docker build -t %DOCKER_IMAGE% ."
             }
         }
 
@@ -24,7 +24,7 @@ pipeline {
             steps {
                 echo "🚀 Pushing Docker Image..."
                 withDockerRegistry([credentialsId: 'docke-hub-cred', url: 'https://index.docker.io/v1/']) {
-                    bat "docker push %DOCKER_IMAGE%"
+                    sh "docker push %DOCKER_IMAGE%"
                 }
             }
         }
