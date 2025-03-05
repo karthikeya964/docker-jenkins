@@ -9,7 +9,7 @@ pipeline {
         stage('Clone Repo') {
             steps {
                 echo "📌 Cloning Repo..."
-                git url: 'https://github.com/karthikeya964/Docker-flask.git', branch: 'main'
+                git url: 'https://github.com/karthikeya964/docker-jenkins.git', branch: 'main'
             }
         }
 
